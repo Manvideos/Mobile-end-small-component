@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="iconfont.css" />
+		<script src="jquery-3.1.1.min.js"></script>
+	</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		footer{
+			border-top: 1px solid #999;
+			background: #333;
+			width: 100%;
+			position: absolute;
+			bottom: 0px;
+		}
+		ul{
+			list-style: none;
+			display: flex;
+			justify-content: space-between;
+		}
+		li{
+			padding-top: 3px;
+			padding-bottom:5px;
+			text-align: center;
+			width: 25%;
+			
+		}
+		ul li a{
+			-webkit-tap-highlight-color: rgba(255,255,255,0);
+			-webkit-user-select: none;
+			-moz-user-focus: none;
+			-moz-user-select: none;
+			font-size: 15px;
+			width: 100%;
+			color: #fff;
+			text-align: center;
+			text-decoration: none;
+			
+			
+		}
+
+		ul li a i{
+			
+			text-decoration: none;
+			display: flex;
+			flex-flow: column;
+		}
+		.iconfont{
+			font-size: 22px;
+			
+		}
+	</style>
+	<body>
+		<footer>
+			<ul>
+				<li><a href="#"><i class=" iconfont icon-shouye-copy"></i>首页</p></a></li>
+				<li><a href="#"><i class="iconfont icon-shequ"></i>社区</a></li>
+				<li><a href="#"><i class="iconfont icon-zhinanzhen1"></i>发现</a></li>
+				<li><a href="#"><i class="iconfont icon-wode"></i>我的</a></li>
+			</ul>
+		</footer>
+		<script>
+			setTimeout(function(){
+		     alert("请切换手机模式")
+	        },1000)
+			$("footer ul li").click(function(){
+			$("footer ul li").children("a").css("color","#fff")
+			$(this).children("a").css("color","red")
+			
+			})
+		</script>
+	</body>
+</html>

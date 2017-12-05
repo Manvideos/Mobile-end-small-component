@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>下拉刷新</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+		<!--引入bootstrap.css-->
+		<style type="text/css">
+			.padd_40 {
+				padding-top: 40px;
+				padding-bottom: 40px;
+				background: #F5F5F5;
+			}
+			
+			.a {
+				line-height: 40px;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				z-index: 10;
+			}
+			
+			.loadtip {
+				display: block;
+				width: 100%;
+				margin: 8px 0;
+				padding: 5px 0;
+				text-align: center;
+				color: #999;
+				border-top: 1px solid #ddd;
+			}
+			
+			.refreshtip {
+				position: absolute;
+				left: 0;
+				width: 100%;
+				margin: 10px 0;
+				text-align: center;
+				color: #999;
+			}
+			
+			footer {
+				width: 100%;
+				position: fixed;
+				line-height: 40px;
+				height: 40px;
+				background: #f50;
+				display: flex;
+				font-size: 0;
+				bottom: 0;
+				left: 0;
+			}
+			
+			footer span {
+				height: 30px;
+				background: #fff;
+				margin-top: 5px;
+				flex: 1;
+				margin: 5px;
+			}
+			
+			.swiper-container,
+			.swiper-wrapper {
+				height: calc(100vh - 130px);
+			}
+			
+			.list-group {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body,
+			html {
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body class="padd_40">
+		<header class="bg-primary text-center a">标题</header>
+		<div class="swiper-container">
+			<div class="refreshtip">下拉可以刷新</div>
+			<div class="swiper-wrapper">
+				<ul class="swiper-slide list-group">
+					<li class="init-loading list-group-item text-center" style="display: none"></li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+					<li class="list-group-item">列表</li>
+				</ul>
+			</div>
+			<div class="loadtip">上拉加载更多</div>
+			<div class="swiper-scrollbar"></div>
+		</div>
+		<footer>
+			<span>tool</span>
+			<span>tool</span>
+			<span>tool</span>
+		</footer>
+		<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<!--jquery.css-->
+		<script src="swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			setTimeout(function(){
+				alert("请切换手机模式")
+			},1000)
+			var loadFlag = true;
+			var mySwiper = new Swiper('.swiper-container', {
+				direction: 'vertical',
+				scrollbar: '.swiper-scrollbar',
+				slidesPerView: 'auto',
+				mousewheelControl: true,
+				freeMode: true,
+				onTouchEnd: function(swiper) {
+					var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+					var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+
+					// 上拉加载
+					if(mySwiper.translate <= _viewHeight - _contentHeight - 40 && loadFlag) {
+						// console.log("已经到达底部！");
+
+						if(loadFlag) {
+							$(".loadtip").html('正在加载...');
+						} else {
+							$(".loadtip").html('没有更多啦！');
+						}
+
+						setTimeout(function() {
+							for(var i = 0; i < 5; i++) {
+								$(".swiper-slide").append('<li class="list-group-item">我是加载出来的...</li>');
+							}
+							$(".loadtip").html('上拉加载更多...');
+							mySwiper.update(); // 重新计算高度;
+						}, 800);
+					}
+
+					// 下拉刷新
+					if(mySwiper.translate >= 50) {
+						$(".init-loading").html('正在刷新...').show();
+						$(".loadtip").html('上拉加载更多');
+						loadFlag = true;
+
+						setTimeout(function() {
+							$(".refreshtip").show(0);
+							$(".init-loading").html('刷新成功！');
+							setTimeout(function() {
+								$(".init-loading").html('').hide();
+							}, 800);
+							$(".loadtip").show(0);
+
+							//刷新操作
+							mySwiper.update(); // 重新计算高度;
+						}, 1000);
+
+					}
+
+				}
+			});
+		</script>
+	</body>
+
+</html>

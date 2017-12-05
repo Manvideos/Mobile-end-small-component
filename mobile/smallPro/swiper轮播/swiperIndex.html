@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		
+		<link rel="stylesheet" type="text/css" href="swiper.min.css"/>
+		<script src="swiper.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0 auto;
+			}
+			.swiper-container,.swiper-wrapper,.swiper-slide,img{
+				width: 100%;
+				height: 180px;
+			}
+			.note{
+				width: 99%;
+				height: 200px;
+				resize: none;
+			
+			}
+			h3{
+				color: #999;
+			}
+		</style>
+	</head>
+	<body>
+<div class="swiper-container">
+     <div class="swiper-wrapper">
+         <div class="swiper-slide"><img src="img/1.jpg" alt="" /></div><!--图1-->
+         <div class="swiper-slide"><img src="img/2.jpg" alt="" /></div><!--图1-->
+         <div class="swiper-slide"><img src="img/3.jpg" alt="" /></div><!--图2-->
+     </div>
+     <div class="swiper-pagination"></div><!--小圆点-->
+     <div class="swiper-button-prev"></div><!--后退箭头-->
+     <div class="swiper-button-next"></div><!--前进箭头-->
+</div>
+<h3>实例代码</h3>
+<textarea class="note" style="padding: 0px!important;">
+<link rel="stylesheet" type="text/css" href="swiper.min.css"/>
+<script src="swiper.min.js"></script>
+<style type="text/css">
+ *{
+	margin: 0 auto;
+  }
+ .swiper-container,.swiper-wrapper,.swiper-slide,img{
+	width: 100%;
+	height: 180px;
+  }
+
+		</style>
+<div class="swiper-container">
+ <div class="swiper-wrapper">
+  <div class="swiper-slide"><img src="img/1.jpg" alt="" /></div><!--图1-->
+  <div class="swiper-slide"><img src="img/2.jpg" alt="" /></div><!--图1-->
+  <div class="swiper-slide"><img src="img/3.jpg" alt="" /></div><!--图2-->
+ </div>
+ <div class="swiper-pagination"></div><!--小圆点-->
+ <div class="swiper-button-prev"></div><!--后退箭头-->
+ <div class="swiper-button-next"></div><!--前进箭头-->
+</div>
+
+<script type="text/javascript">
+var mySwiper = new Swiper('.swiper-container', {
+pagination: '.swiper-pagination',
+//指示器，在这里指定指示器的名称及上面对应的html的class为swiper-pagination
+loop:true,
+//循环，设置后图片轮播到最后一张时会继续无缝衔接到第一张，若设置为false.则会在视觉上明显看到从最后一张返回到第一章轮播图
+autoplay:2000,
+//自动轮播时间，单位为ms
+initialSlide:2,
+//循环开始时的指示器位置，起始位0对应第一张
+direction:'horizontal',
+//轮播方向，vertical垂直，默认horizontal水平
+speed:1000,
+//从轮播其到图像贴合边缘使用的时间，可结合transition-timing-function设定速度变化曲线
+grabCursor:true,
+//抓手，设置为true时为抓手且拖动时变为紧握形态
+prevButton:'.swiper-button-prev',
+//向前按钮
+nextButton:'.swiper-button-next', 
+//向后按钮
+paginationClickable :true,
+//点击小圆点换页
+autoplayDisableOninteractionL:false,
+})
+</script>
+		</textarea>
+
+		<script type="text/javascript">
+           window.onload=function(){
+           	setTimeout(function(){
+				alert("请切换手机模式")
+			},1000)
+			var mySwiper = new Swiper('.swiper-container', {
+	           
+	             pagination: '.swiper-pagination',//指示器，在这里指定指示器的名称及上面对应的html的class为swiper-pagination
+                 loop:true,//循环，设置后图片轮播到最后一张时会继续无缝衔接到第一张，若设置为false.则会在视觉上明显看到从最后一张返回到第一章轮播图
+                 autoplay:2000,//自动轮播时间，单位为ms
+                 initialSlide:2,//循环开始时的指示器位置，起始位0对应第一张
+                 direction:'horizontal',//轮播方向，vertical垂直，默认horizontal水平
+                 speed:1000,//从轮播其到图像贴合边缘使用的时间，可结合transition-timing-function设定速度变化曲线
+                 grabCursor:true,//抓手，设置为true时为抓手且拖动时变为紧握形态
+			     prevButton:'.swiper-button-prev',//向前按钮
+				 nextButton:'.swiper-button-next', //向后按钮
+				 paginationClickable :true,//点击小圆点换页
+				 autoplayDisableOninteractionL:false,
+             })
+           }
+            
+		</script>
+	</body>
+</html>
